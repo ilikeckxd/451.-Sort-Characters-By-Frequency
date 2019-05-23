@@ -1,0 +1,23 @@
+import collections
+class Solution(object):
+    def frequencySort(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        s_dict = collections.Counter(s)
+        s_list = list(s_dict.items())  # 把計數字典轉成list of tuples
+        s_list.sort(key=lambda x: x[1], reverse=True)  # 以第二個為key，由大到小排列
+        rs = ''
+        for letter in s_list:
+            counter = letter[1]
+            while counter > 0:
+                rs += letter[0]
+                counter -= 1
+                
+        return rs
+        
+        
+# Runtime: 1048 ms, faster than 10.08% of Python online submissions for Sort Characters By Frequency.
+# Memory Usage: 14.4 MB, less than 58.51% of Python online submissions for Sort Characters By Frequency.
+# Medium
